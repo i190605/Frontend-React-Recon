@@ -24,21 +24,11 @@ export default function Conversion(props) {
         justifyContent='space-between'
         alignItems='center'
         w='100%'
-        mb='8px'>
+        mb='60px'>
         <Text color={textColor} fontSize='md' fontWeight='600' mt='4px'>
-          Your Pie Chart
+          CODE ANALYIS
         </Text>
-        <Select
-          fontSize='sm'
-          variant='subtle'
-          defaultValue='monthly'
-          width='unset'
-          fontWeight='700'>
-          <option value='daily'>Daily</option>
-          <option value='monthly'>Monthly</option>
-          <option value='yearly'>Yearly</option>
-        </Select>
-      </Flex>
+            </Flex>
 
       <PieChart
         h='100%'
@@ -63,7 +53,7 @@ export default function Conversion(props) {
               color='secondaryGray.600'
               fontWeight='700'
               mb='5px'>
-              Your files
+              Smelly Code 
             </Text>
           </Flex>
           <Text fontSize='lg' color={textColor} fontWeight='700'>
@@ -73,13 +63,13 @@ export default function Conversion(props) {
         <VSeparator mx={{ base: "60px", xl: "60px", "2xl": "60px" }} />
         <Flex direction='column' py='5px' me='10px'>
           <Flex align='center'>
-            <Box h='8px' w='8px' bg='#6AD2FF' borderRadius='50%' me='4px' />
+            <Box h='8px' w='8px' bg='#6AD2FF' borderRadius='50%' me='60px' />
             <Text
               fontSize='xs'
               color='secondaryGray.600'
               fontWeight='700'
               mb='5px'>
-              System
+              Non Smelly Code
             </Text>
           </Flex>
           <Text fontSize='lg' color={textColor} fontWeight='700'>

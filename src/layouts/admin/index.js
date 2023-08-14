@@ -2,6 +2,7 @@
 import { Portal, Box, useDisclosure, Text, Button, Link } from '@chakra-ui/react';
 import Footer from 'components/footer/FooterAdmin.js';
 // Layout components
+
 import Navbar from 'components/navbar/NavbarAdmin.js';
 import Sidebar from 'components/sidebar/Sidebar.js';
 import { SidebarContext } from 'contexts/SidebarContext';
@@ -108,15 +109,14 @@ export default function Dashboard(props) {
 						toggleSidebar,
 						setToggleSidebar
 					}}>
-					<Sidebar routes={routes} display='none' {...rest} />
 					<Box
-						float='right'
+						float='relative'
 						minHeight='100vh'
 						height='100%'
 						overflow='auto'
 						position='relative'
 						maxHeight='100%'
-						w={{ base: '100%', xl: 'calc( 100% - 290px )' }}
+						w={{ base: '100%', xl: 'calc( 100% - 0px )' }}
 						maxWidth={{ base: '100%', xl: 'calc( 100% - 290px )' }}
 						transition='all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1)'
 						transitionDuration='.2s, .2s, .35s'
@@ -137,7 +137,7 @@ export default function Dashboard(props) {
 						</Portal>
 
 						{getRoute() ? (
-							<Box mx='auto' p={{ base: '20px', md: '30px' }} pe='20px' minH='100vh' pt='50px'>
+							<Box mx='auto' p={{ base: '20px', md: '100px' }} pe='30px' minH='100vh' pt='50px'>
 								<Switch>
 									{getRoutes(routes)}
 									<Redirect from='/' to='/admin/default' />

@@ -9,26 +9,45 @@ import {
   Th,
   Thead,
   Tr,
+  Button,
   useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
+
 import React, { useMemo } from "react";
 import {
   useGlobalFilter,
   usePagination,
   useSortBy,
   useTable,
+  Lorem,
+ Box,
+style,
+Typography,
+open,
+
+  
 } from "react-table";
 
 // Custom components
 import Card from "components/card/Card";
 import Menu from "components/menu/MainMenu";
+import BasicUsage from "./Modal";
+
 
 // Assets
 import { MdCheckCircle, MdCancel, MdOutlineError } from "react-icons/md";
+import { VisaIcon } from "components/icons/Icons";
+import { ViewIcon } from "@chakra-ui/icons";
 export default function ColumnsTable(props) {
   const { columnsData, tableData } = props;
+  const [open, setOpen] = React.useState(false);
+  const handleClick = async () => {
+    setOpen(!open)
+  }
 
   const columns = useMemo(() => columnsData, [columnsData]);
+  
   const data = useMemo(() => tableData, [tableData]);
 
   const tableInstance = useTable(
@@ -54,6 +73,8 @@ export default function ColumnsTable(props) {
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
   return (
+    <>
+    <BasicUsage open={open} setOpen={setOpen} />
     <Card
       direction='column'
       w='100%'
@@ -65,6 +86,7 @@ export default function ColumnsTable(props) {
           fontSize='22px'
           fontWeight='700'
           lineHeight='100%'>
+          
           Complex Table
         </Text>
         <Menu />
@@ -104,38 +126,40 @@ export default function ColumnsTable(props) {
                         {cell.value}
                       </Text>
                     );
-                  } else if (cell.column.Header === "STATUS") {
+                  } else if (cell.column.Header === "ICON") {
+                    //pop over]
                     data = (
-                      <Flex align='center'>
-                        <Icon
-                          w='24px'
-                          h='24px'
-                          me='5px'
-                          color={
-                            cell.value === "Approved"
-                              ? "green.500"
-                              : cell.value === "Disable"
-                              ? "red.500"
-                              : cell.value === "Error"
-                              ? "orange.500"
-                              : null
+                      <Flex align='center'>                                  
+                              <Button onClick={handleClick}
+                              
+                              as={
+                            ViewIcon
                           }
-                          as={
-                            cell.value === "Approved"
-                              ? MdCheckCircle
-                              : cell.value === "Disable"
-                              ? MdCancel
-                              : cell.value === "Error"
-                              ? MdOutlineError
-                              : null
-                          }
-                        />
-                        <Text color={textColor} fontSize='sm' fontWeight='700'>
+                        ></Button>
+
+
+
+{/* <Modal
+  open={open}
+  onClose={handleClose}
+  aria-labelledby="modal-modal-title"
+  aria-describedby="modal-modal-description"
+>
+  <Box sx={style}>
+    <Typography id="modal-modal-title" variant="h6" component="h2">
+      Text in a modal
+    </Typography>
+    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+      Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+    </Typography>
+  </Box>
+</Modal>                  */}
+              <Text color={textColor} fontSize='sm' fontWeight='700'>
                           {cell.value}
                         </Text>
                       </Flex>
                     );
-                  } else if (cell.column.Header === "DATE") {
+                  } else if (cell.column.Header === "DESCRIPTION") {
                     data = (
                       <Text color={textColor} fontSize='sm' fontWeight='700'>
                         {cell.value}
@@ -173,5 +197,7 @@ export default function ColumnsTable(props) {
         </Tbody>
       </Table>
     </Card>
+    </>
+    
   );
 }

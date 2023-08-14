@@ -68,10 +68,10 @@ export default function AdminNavbar(props) {
 				md: '10px'
 			}}
 			ps={{
-				xl: '12px'
+				xl: 'left'
 			}}
 			pt='8px'
-			top={{ base: '12px', md: '16px', lg: '20px', xl: '20px' }}
+			top={{ base: '12px', md: '16px', lg: '20px', xl: '50px' }}
 			w={{
 				base: 'calc(100vw - 6%)',
 				md: 'calc(100vw - 8%)',
