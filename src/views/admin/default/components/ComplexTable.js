@@ -33,6 +33,7 @@ open,
 import Card from "components/card/Card";
 import Menu from "components/menu/MainMenu";
 import BasicUsage from "./Modal";
+import smell from "../variables/smell.json";
 
 
 // Assets
@@ -40,8 +41,11 @@ import { MdCheckCircle, MdCancel, MdOutlineError } from "react-icons/md";
 import { VisaIcon } from "components/icons/Icons";
 import { ViewIcon } from "@chakra-ui/icons";
 export default function ColumnsTable(props) {
+ 
   const { columnsData, tableData } = props;
   const [open, setOpen] = React.useState(false);
+  const [selectedSection, setSelectedSection] = React.useState(null);
+
   const handleClick = async () => {
     setOpen(!open)
   }
@@ -49,7 +53,20 @@ export default function ColumnsTable(props) {
   const columns = useMemo(() => columnsData, [columnsData]);
   
   const data = useMemo(() => tableData, [tableData]);
-
+  const sections = [
+    {
+      "header": "Smell Name",
+      "description": "Description of the smell"
+    },
+    {
+      "header": "Line Number",
+      "description": "Ending Line"
+    },
+    {
+      "header": "Percentage",
+      "description": "Duplication with File"
+    }
+  ];
   const tableInstance = useTable(
     {
       columns,
@@ -72,10 +89,20 @@ export default function ColumnsTable(props) {
 
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
+  const openModal = (section) => {
+    setSelectedSection(section);
+    setOpen(true);
+  };
+
+  const closeModal = () => {
+    setOpen(false);
+    setSelectedSection(null);
+  };
   return (
     <>
-    <BasicUsage open={open} setOpen={setOpen} />
-    <Card
+        <BasicUsage open={open} setOpen={closeModal} section={sections} />
+  
+   <Card
       direction='column'
       w='100%'
       px='0px'
