@@ -10,6 +10,7 @@ import {
   } from "@chakra-ui/react";
 
 import React, { useMemo } from "react";
+import styles from "./modal.css";
 
 import CheckTable from "./CheckTable";
 import ColumnsTable from "./CheckTable";
@@ -30,23 +31,34 @@ const  BasicUsage = (props) => {
     <>
      <Modal onClose={props.setOpen} isOpen={props.open}>
       <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>
+      <ModalContent  className="custom-modal">
+        <ModalHeader className="modal-header">
+    {props.section.map((section, index) => (
+  <div key={index}>
+    {index === 0 && <h2>{section.header}</h2>}
+  </div>
+))}
         </ModalHeader>
         <ModalCloseButton />
   
-        <ModalBody>
+        <ModalBody className="modal-body">
             {props && props.section.map((section, index) => (
-              <div key={index}>
-                <h2>{section.header}</h2>
+              <div key={index}  className={`section ${index === 0 ? "first-section" : ""}`}
+              >
+            
+                 {index !== 0 && <h2>{section.header}</h2>}
                 <p>{section.description}</p>
               </div>
             ))}
+
+            
           </ModalBody>
         
-        <ModalFooter>
-          <Button onClick={props.setOpen}>Close</Button>
-        </ModalFooter>
+      <ModalFooter className="modal-footer">
+      <Button onClick={props.setOpen} variant="solid" className="close-button">
+        Close
+      </Button>
+    </ModalFooter>
       </ModalContent>
     </Modal>
   </>
