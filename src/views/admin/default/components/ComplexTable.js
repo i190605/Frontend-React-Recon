@@ -56,15 +56,32 @@ export default function ColumnsTable(props) {
   const sections = [
     {
       "header": "Smell Name",
-      "description": "Description of the smell"
+      "description": "Duplicate Component"
     },
+    {
+      "header": "Description",
+      "description": "Duplicate Component "
+
+    },
+
     {
       "header": "Line Number",
-      "description": "Ending Line"
+      "description": "102"
     },
     {
-      "header": "Percentage",
-      "description": "Duplication with File"
+      "header": "End Line Number",
+      "description": "203"
+    },
+
+    {
+      "header":"Percentage",
+      "description": "96"
+
+    },
+
+    {
+      "header": "Duplication with File",
+      "description": "index.js"
     }
   ];
   const tableInstance = useTable(
