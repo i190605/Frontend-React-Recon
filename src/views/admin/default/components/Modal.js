@@ -14,7 +14,6 @@ import {
 
 import React from "react";
 import styles from "./modal.css";
-
 const BasicUsage = (props) => {
   console.log(props.section);
   return (
